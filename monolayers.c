@@ -70,15 +70,17 @@ int QuintDiagSolve(double *D,				\
 
 int main(int argc, char **argv) { 
 
-  if(argc==3) { 
+  if(argc!=3) { 
+    printf("\nargc = %d; Please provide input:  r  R\n\n", argc);
+    exit(1);
+  } 
      r = atof(argv[1]); 
      R = atof(argv[2]);
-  } 
 
-  //  printf("r: %g R: %g\n", r, R);  
+  printf("r: %g R: %g\n", r, R);  
 
   double delT = 0.1;
-  int maxiter = 0;
+  int maxiter = 5;
   double errortol = 1.0e-7;
 
   //--------------------------------------------------------------------------------
@@ -369,7 +371,7 @@ int main(int argc, char **argv) {
 
     //------------ Rho Newton done ----------------------------------------------
     if((iter%25)==0);
-    `    printf( "%d %16.16g %g err = %g delt = %g %g %g\n", iter, EMin , ETorus, error, delT, DecayC/sqrt((double)iter), DecayTol);	       
+    printf( "%d %16.16g %g err = %g delt = %g %g %g\n", iter, EMin , ETorus, error, delT, DecayC/sqrt((double)iter), DecayTol);	       
 
     //----------- Theta  Newton start --------------------------------------------
 
